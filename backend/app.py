@@ -3,10 +3,8 @@ from transformers import pipeline
 
 app = Flask(__name__)
 
-# Load Hugging Face pipelines
-# Note: device=0 ensures the GPU is used if available.
-summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", device=0)
-text_generator = pipeline("text2text-generation", model="google/flan-t5-small", device=0)
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn", device=0)
+text_generator = pipeline("text2text-generation", model="gpt-neo", device=0)
 
 @app.route('/api/summarize', methods=['POST'])
 def summarize():
